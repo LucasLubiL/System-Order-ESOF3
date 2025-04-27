@@ -1,0 +1,10 @@
+{
+  "name": "sistema",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run dev --prefix back\" \"npm run dev --prefix front\""
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
