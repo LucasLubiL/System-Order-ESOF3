@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatos OS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button id="bRelatosOS">RELATOS OS</button>
+
+    <div id="miniTelaRelatos" class="mini-tela" style="display: none;">
+        <h3>Relatos de O.S. para Desenvolvedor</h3>
+        <div id="containerRelatos" class="relatos-container">
+            <!-- DADOS FAKES -->
+            <div class="bloco-relato">
+                <p><strong>ID:</strong> 101</p>
+                <textarea disabled>Erro ao calcular o valor total da ordem de serviço quando o tipo de pagamento é cartão parcelado.</textarea>
+                <button>Finalizar</button>
+            </div>
+            <div class="bloco-relato">
+                <p><strong>ID:</strong> 102</p>
+                <textarea disabled>Relatório de cliente não está aparecendo na tela de consulta de ordens concluídas.</textarea>
+                <button>Finalizar</button>
+            </div>
+            <div class="bloco-relato">
+                <p><strong>ID:</strong> 103</p>
+                <textarea disabled>A descrição do funcionário está sumindo ao salvar e recarregar a ordem de serviço.</textarea>
+                <button>Finalizar</button>
+            </div>
+            <div class="bloco-relato">
+                <p><strong>ID:</strong> 104</p>
+                <textarea disabled>Botão de exclusão de ordens está desabilitado mesmo quando a ordem ainda não foi paga.</textarea>
+                <button>Finalizar</button>
+            </div>
+            <div class="bloco-relato">
+                <p><strong>ID:</strong> 105</p>
+                <textarea disabled>Erro de conexão ao tentar salvar ordens grandes com mais de 1000 caracteres na descrição.</textarea>
+                <button>Finalizar</button>
+            </div>
+            <!-- ...adicione mais se quiser testar o scroll -->
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById("bRelatosOS");
+        const mini = document.getElementById("miniTelaRelatos");
+        btn.addEventListener("click", () => {
+            mini.style.display = "block";
+        });
+    </script>
+
+</body>
+</html>

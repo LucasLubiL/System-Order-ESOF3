@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Front/CSS/principal.css">
+    <link rel="stylesheet" href="/Front/CSS/cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansation:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Principal</title>
+</head>
+<body>
+    
+    <header>
+        <nav id="nav">
+            <ul>
+                <li>
+                    <select id="select-ordem">
+                        <option value="">Ordem de Serviço</option>
+                        <option value="criar-ordem">Criar Ordem de Serviço</option>
+                        <option value="ordem-consulta">Consultar Ordem de Serviço</option>
+                    </select>
+                </li>
+                <li>
+                    <select id="select-cadastro">
+                        <option value="">Cadastro</option>
+                        <option value="cliente">Cadastro de Cliente</option>
+                        <option disabled value="">Cadastro de Funcionário</option>
+                        <option disabled value="">Cadastro de Usuário</option>
+                        <option value="pagamento">Cadastro de Pagamento</option>
+                        <option value="servico">Cadastro de Serviço</option>
+                    </select>
+                </li>
+                <li>
+                    <select id="select-consulta">
+                        <option value="">Consulta</option>
+                        <option value="cliente-consulta">Consulta de Cliente</option>
+                        <option disabled value="funcionario-consulta">Consulta de Funcionário</option>
+                        <option disabled value="usuario-consulta">Consulta de Usuário</option>
+                        <option value="pagamento-consulta">Consulta de Pagamento</option>
+                        <option value="servico-consulta">Consulta de Serviço</option>
+                    </select>
+                </li>
+                <li id="registro">Registro de Pagamento</li>
+                <li disabled style="opacity: 0.3; pointer-events: none;">Relatos O.S.</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="mini-tela-cliente" class="mini-tela-cliente" style="display: none;">
+        <div class="mini-tela-cliente-filho" style="width: 700px;">
+            <h1 class="titul">Cadastro de Cliente</h1>
+            <form id="formCliente">
+    
+                <div class="div-label">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="name-cliente">Nome:</label>
+                            <input class="input" type="text" id="name-cliente" name="name" required>
+                        </div>
+                        <div class="campo">
+                            <label for="cpf-cliente">CPF:</label>
+                            <input class="input" type="text" id="cpf-cliente" name="cpf" required>
+                        </div>
+                    </div>
+    
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="birthdate-cliente">Nascimento:</label>
+                            <input class="input" type="date" id="birthdate-cliente" name="birthdate" required>
+                        </div>
+                        <div class="campo">
+                            <label for="address-cliente">Endereço:</label>
+                            <input class="input" type="text" id="address-cliente" name="address" required>
+                        </div>
+                    </div>
+    
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="city-cliente">Cidade:</label>
+                            <input class="input" type="text" id="city-cliente" name="city" required>
+                        </div>
+                        <div class="campo">
+                            <label for="state-cliente">Estado:</label>
+                            <input class="input" type="text" id="state-cliente" name="state" required>
+                        </div>
+                    </div>
+                </div>
+    
+                <button id="bC" type="submit">Salvar</button>
+                <button class="b2" type="button" onclick="closeModelCliente()">Fechar</button>
+    
+            </form>
+        </div>
+    </div>
+
+    
+    <div id="mini-tela-ordem" class="mini-tela-ordem" style="display: none;">
+        <div class="mini-tela-ordem-filho" style="width: 700px;">
+            <h1 class="titul">Criação de Ordem de Serviço</h1>
+            <form id="formOrdem">
+
+                <div class="div-label">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="select-cliente">Cliente:</label>
+                            <select id="select-cliente" name="ordem-cliente" required>
+                                <option value="">Cliente</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="select-servico">Tipo de Serviço:</label>
+                            <select id="select-servico" name="ordem-servico" required>
+                                <option value="">Serviço</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="select-pagamento">Tipo de Pagamento:</label>
+                            <select id="select-pagamento" name="ordem-pagamento" required>
+                                <option value="">Pagamento</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="input-valor">Valor do Serviço:</label>
+                            <input class="input" type="number" id="input-valor" name="ordem-valor" required>
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="textarea-descricao-cliente">Relato do cliente:</label>
+                            <textarea class="input" id="textarea-descricao-cliente" name="address" rows="6" cols="50" style="resize: none; padding: 5px; font-size: 15px;" required></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button id="bO" type="submit">Criar</button>
+                <button class="b2" type="button" onclick="closeModelOrdem()">Fechar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="mini-tela-pagamento" class="mini-tela-pagamento" style="display: none;">
+        <div class="mini-tela-pagamento-filho"  style="width: 380px;">
+            <h1 class="titul">Cadastro de Pagamento</h1>
+            <form id="formPag">
+
+                <div class="div-label">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="pag-input">Tipo de pagamento:</label>
+                            <input class="input" type="text" id="pag-input" name="pag" required>
+                        </div>
+                    </div>
+                </div>    
+
+                <button id="bP" type="submit">Salvar</button>
+                <button class="b2" type="button" onclick="closeModelPagSer()">Fechar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="mini-tela-servico" class="mini-tela-servico" style="display: none;">
+        <div class="mini-tela-servico-filho" style="width: 350px;">
+            <h1 class="titul">Cadastro de Serviço</h1>
+            <form id="formService">
+
+                <div class="div-label">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="servico-input">Tipo de Serviço:</label>
+                            <input class="input" type="text" id="servico-input" name="servico" required>
+                        </div>
+                    </div>
+                </div>    
+
+                <button id="bS" type="submit">Salvar</button>
+                <button class="b2" type="button" onclick="closeModelPagSer()">Fechar</button>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--CONSULTA, EDIÇOES E EXCLUSÔES-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="mini-tela-cliente-consulta" class="mini-tela-cliente-consulta" style="display: none;">
+        <div class="mini-tela-cliente-filho-consulta" style="width: 700px;">
+            <h1 class="titul">Consulta de Cliente</h1>
+            <form id="formClienteConsulta">              
+                <div class="div-label">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="select-cliente-consulta">Cliente:</label>
+                            <select id="select-cliente-consulta" name="consulta-cliente" required>
+                                <option value="">Cliente</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="cpf-cliente-consulta-barra">CPF cliente:</label>
+                            <input class="input" type="text" id="cpf-cliente-consulta-barra" name="name-cpf-cliente-consulta-barra">
+                        </div>
+                        <button id="bConsultaCli" type="button">Consultar</button>
+                    </div>   
+                </div>
+                <hr>
+                <div style="width: 15%; margin-bottom: 20px;" class="campo">
+                    <label for="id-cliente-consulta-barra">ID cliente:</label>
+                    <input disabled class="input" type="text" id="id-cliente-consulta-barra" name="name-id-cliente-consulta-barra">
+                </div>
+                <fieldset disabled id="fieldset-cliente">
+                    <div class="div-label">
+                        <div class="linha">
+                            <div class="campo">
+                                <label for="name-cliente-consulta">Nome:</label>
+                                <input class="input" type="text" id="name-cliente-consulta" name="name" required>
+                            </div>
+                            <div class="campo">
+                                <label for="cpf-cliente-consulta">CPF:</label>
+                                <input class="input" type="text" id="cpf-cliente-consulta" name="cpf" required>
+                            </div>
+                        </div>
+
+                        <div class="linha">
+                            <div class="campo">
+                                <label for="birthdate-cliente-consulta">Nascimento:</label>
+                                <input class="input" type="date" id="birthdate-cliente-consulta" name="birthdate" required>
+                            </div>
+                            <div class="campo">
+                                <label for="address-cliente">Endereço:</label>
+                                <input class="input" type="text" id="address-cliente-consulta" name="address" required>
+                            </div>
+                        </div>
+
+                        <div class="linha">
+                            <div class="campo">
+                                <label for="city-cliente-consulta">Cidade:</label>
+                                <input class="input" type="text" id="city-cliente-consulta" name="city" required>
+                            </div>
+                            <div class="campo">
+                                <label for="state-cliente-consulta">Estado:</label>
+                                <input class="input" type="text" id="state-cliente-consulta" name="state" required>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <nav aria-label="Page navigation only arrows" style="margin-top: 20px;">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <li class="page-item" id="prev-btn">
+                            <a class="page-link" href="#" aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item" id="next-btn">
+                            <a class="page-link" href="#" aria-label="Próximo">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <button id="bCC" type="submit" style="opacity: 0.5; cursor: default;" disabled>Salvar</button>
+                <button id="bCE" type="button" onclick="habilitarEdicaoCliente()">Editar</button>
+                <button id="bCEx" type="button" onclick="excluirDadosCliente()">Excluir</button>
+                <button class="b2" type="button" onclick="closeModelClienteConsulta()">Fechar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="mini-tela-pagamento-consulta" class="mini-tela-pagamento-consulta" style="display: none;">
+        <div class="mini-tela-pagamento-filho-consulta"  style="width: 550px;">
+            <h1 class="titul">Consulta de Pagamento</h1>
+            <form id="formPagConsulta">
+
+                <div class="div-label">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="select-pagamento-consulta">Pagamento:</label>
+                            <select style="width: 30%;" id="select-pagamento-consulta" name="select-pagamento-consulta" required>
+                                <option value="">Pagamento</option>
+                            </select>
+                        </div>
+                        <!--<div class="campo">
+                            <label for="cpf-funcionario-consulta-barra">CPF funcionário:</label>
+                            <input class="input" type="text" id="cpf-funcionario-consulta-barra" name="name-cpf-funcionario-consulta-barra">
+                        </div>
+                        <button id="bConsultaFunc" type="button">Consultar</button> -->
+                    </div>   
+                </div>
+                <hr>
+
+                <fieldset disabled id="fieldset-pagamento">
+                    <div class="div-label">
+                        <div class="linha">
+                            <div style="max-width: 25%;" class="campo">
+                                <label for="id-pagamento-consulta-barra">ID pagamento:</label>
+                                <input disabled class="input" type="text" id="id-pagamento-consulta-barra" name="name-id-pagamento-consulta-barra">
+                            </div>
+                            <div style="max-width: 40%;" class="campo">
+                                <label for="nome-pagamento-consulta">Tipo de pagamento:</label>
+                                <input class="input" type="text" id="nome-pagamento-consulta" name="pag" required>
+                            </div>
+                        </div>
+                    </div>    
+                </fieldset>
+
+                <nav aria-label="Page navigation only arrows" style="margin-top: 20px;">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <li class="page-item" id="prev-btnP">
+                            <a class="page-link" href="#" aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item" id="next-btnP">
+                            <a class="page-link" href="#" aria-label="Próximo">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <button id="bPC" type="submit" style="opacity: 0.5; cursor: default;" disabled>Salvar</button>
+                <button id="bPE" type="button" onclick="habilitarEdicaoPagamento()">Editar</button>
+                <button id="bPEx" type="button" onclick="excluirDadosPagamento()">Excluir</button>
+                <button class="b2" type="button" onclick="closeModelPagamentoConsulta()">Fechar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="mini-tela-servico-consulta" class="mini-tela-servico-consulta" style="display: none;">
+        <div class="mini-tela-servico-filho-consulta" style="width: 550px;">
+            <h1 class="titul">Consulta de Serviço</h1>
+            <form id="formServiceConsulta">
+                
+                <div class="div-label">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="select-servico-consulta">Serviço:</label>
+                            <select style="width: 70%;" id="select-servico-consulta" name="select-servico-consulta" required>
+                                <option value="">Serviço</option>
+                            </select>
+                        </div>
+                        <!--<div class="campo">
+                            <label for="cpf-funcionario-consulta-barra">CPF funcionário:</label>
+                            <input class="input" type="text" id="cpf-funcionario-consulta-barra" name="name-cpf-funcionario-consulta-barra">
+                        </div>
+                        <button id="bConsultaFunc" type="button">Consultar</button> -->
+                    </div>   
+                </div>
+                <hr>
+
+                <fieldset disabled id="fieldset-servico">
+                    <div class="div-label">
+                        <div class="linha">
+                            <div style="max-width: 30%;" class="campo">
+                                <label for="id-servico-consulta-barra">ID serviço:</label>
+                                <input disabled class="input" type="text" id="id-servico-consulta-barra" name="name-id-pagamento-consulta-barra">
+                            </div>
+                            <div class="campo">
+                                <label for="servico-input-consulta">Tipo de Serviço:</label>
+                                <input class="input" type="text" id="servico-input-consulta" name="servico" required>
+                            </div>
+                        </div>
+                    </div>    
+                </fieldset>
+
+                <nav aria-label="Page navigation only arrows" style="margin-top: 20px;">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <li class="page-item" id="prev-btnS">
+                            <a class="page-link" href="#" aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item" id="next-btnS">
+                            <a class="page-link" href="#" aria-label="Próximo">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <button id="bSC" type="submit" style="opacity: 0.5; cursor: default;" disabled>Salvar</button>
+                <button id="bSE" type="button" onclick="habilitarEdicaoServico()">Editar</button>
+                <button id="bSEx" type="button" onclick="excluirDadosServico()">Excluir</button>
+                <button class="b2" type="button" onclick="closeModelServicoConsulta()">Fechar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="mini-tela-ordem-consulta" class="mini-tela-ordem-consulta" style="display: none;">
+        <div class="mini-tela-ordem-filho-consulta" style="width: 50%; margin-top: 50px;">
+            <h1 class="titul">Consulta de Ordem de Serviço</h1>
+            <form id="formOrdemConsulta">
+
+                <div class="div-label">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="select-ordem-consulta">Ordem de Serviço:</label>
+                            <select style="width: 100%;" id="select-ordem-consulta" name="select-ordem-consulta" required>
+                                <option value="">Ordem de Serviço</option>
+                            </select>
+                        </div>
+                        <div style="margin-right: 320px;" class="campo">
+                            <label for="id-ordem-consulta-barra">Número da O.S.:</label>
+                            <input style="width: 60%;" class="input" type="text" id="id-ordem-consulta-barra" name="id-ordem-consulta-barra">
+                        </div>
+                        <button id="bConsultaOrdem" type="button">Consultar</button>
+                    </div>   
+                </div>
+                <hr>
+                
+                <div class="div-label">
+                    <div class="linha">
+                        <div style="width: 18%; margin-bottom: 20px;" class="campo">
+                            <label for="id-ordem-consulta">ID O.S.:</label>
+                            <input disabled class="input" type="text" id="id-ordem-consulta" name="id-ordem-consulta">
+                        </div>
+                        <div style="width: 18%; margin-bottom: 20px;" class="campo">
+                            <label for="status-ordem-consulta">Status:</label>
+                            <input disabled class="input" type="text" id="status-ordem-consulta" name="status-ordem-consulta">
+                        </div>
+                        <div style="width: 18%; margin-bottom: 20px;" class="campo">
+                            <label for="data-ordem-criacao-consulta">Data criação:</label>
+                            <input disabled class="input" type="date" id="data-ordem-criacao-consulta" name="data-ordem-criacao-consulta">
+                        </div>
+                        <div style="width: 18%; margin-bottom: 20px;" class="campo">
+                            <label for="data-ordem-finalizacao-consulta">Data finalização:</label>
+                            <input disabled class="input" type="date" id="data-ordem-finalizacao-consulta" name="data-ordem-finalizacao-consulta">
+                        </div>
+                        <div style="width: 18%; margin-bottom: 20px;" class="campo">
+                            <label for="criador-ordem-consulta">Usuário:</label>
+                            <input disabled class="input" type="text" id="criador-ordem-consulta" name="criador-ordem-consulta">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <fieldset disabled id="fieldset-ordem">
+                    <div class="div-label">
+                        <div class="linha">
+                            <div class="campo">
+                                <label for="select-cliente-ordem-consulta">Cliente:</label>
+                                <select disabled id="select-cliente-ordem-consulta" name="ordem-cliente" required>
+                                    <option value="">Cliente</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="select-servico-ordem-consulta">Serviço:</label>
+                                <select disabled id="select-servico-ordem-consulta" name="ordem-servico" required>
+                                    <option value="">Serviço</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="select-pagamento-ordem-consulta">Pagamento:</label>
+                                <select id="select-pagamento-ordem-consulta" name="ordem-pagamento" required>
+                                    <option value="">Pagamento</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label for="input-valor-ordem-consulta">Valor:</label>
+                                <input class="input" type="number" id="input-valor-ordem-consulta" name="ordem-valor" required>
+                            </div>
+                        </div>
+
+                        <div class="linha">
+                            <div class="campo">
+                                <label for="textarea-descricao-cliente-ordem-consulta">Relato do cliente:</label>
+                                <textarea disabled class="input" id="textarea-descricao-cliente-ordem-consulta" name="address" rows="4" cols="50" style="resize: none; padding: 5px; font-size: 15px;" required></textarea>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+                    <div class="div-label">
+                        <div class="linha">
+                            <div class="campo">
+                                <label for="textarea-descricao-funcionario-ordem-consulta">Serviço prestado:</label>
+                                <textarea class="input" id="textarea-descricao-funcionario-ordem-consulta" name="address" rows="4" cols="50" style="resize: none; padding: 5px; font-size: 15px;" required></textarea>
+                            </div>
+                            <div style="margin-top: 6px" class="linha">
+                                <div class="campo">
+                                    <button style="width: 150px;" id="bOC" type="submit">Finalizar</button>   
+                                    <button style="width: 150px;" id="bOD" type="submit">Desenvolvedor</button>            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <nav aria-label="Page navigation only arrows" style="margin-top: 20px;">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <li class="page-item" id="prev-btnO">
+                            <a class="page-link" href="#" aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item" id="next-btnO">
+                            <a class="page-link" href="#" aria-label="Próximo">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <button id="bOE" type="button" onclick="habilitarEdicaoOrdem()">Editar</button>
+                <button id="bOCan" type="button" onclick="cancelarOrdemConsulta()">Cancelar</button>
+                <button class="b2" type="button" onclick="closeModelOrdemConsulta()">Fechar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="mini-tela-registro-consulta" class="mini-tela-registro-consulta" style="display: none;">
+        <div class="mini-tela-registro-filho-consulta" style="width: 550px;">
+            <h1 class="titul">Registro de Pagamento</h1>
+            <form id="formRegistroConsulta">
+                
+                <div class="div-label">
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="select-registro-consulta">Registro:</label>
+                            <select style="width: 100%;" id="select-registro-consulta" name="select-registro-consulta" required>
+                                <option value="">Registro</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="ord-registro-consulta-barra">O.S.:</label>
+                            <input style="width: 50%;" class="input" type="text" id="ord-registro-consulta-barra" name="name-ord-registro-consulta-barra">
+                        </div>
+                        <button id="bConsultaRegistro" type="button">Consultar</button>
+                    </div>   
+                </div>
+                <hr>
+
+                <div style="max-width: 20%;" class="campo">
+                    <label for="id-registro-consulta-barra">ID Registro:</label>
+                    <input disabled class="input" type="text" id="id-registro-consulta-barra" name="name-id-pagamento-consulta-barra">
+                </div>
+                <fieldset style="margin-top: 10px" disabled id="fieldset-registro">
+                    <div class="div-label">
+                        <div class="linha">
+                            <div style="max-width: 30%;" class="campo">
+                                <label for="ordem-registro-consulta">ID Ordem:</label>
+                                <input disabled class="input" type="text" id="ordem-registro-consulta" name="ordem-registro-consulta" required>
+                            </div>
+                            <div style="max-width: 30%;" class="campo">
+                                <label for="status-registro-consulta">Status:</label>
+                                <input disabled class="input" type="text" id="status-registro-consulta" name="status-registro-consulta" required>
+                            </div>
+                            <div style="max-width: 30%;" class="campo">
+                                <label for="rec-registro-consulta">Recebimento:</label>
+                                <input disabled class="input" type="date" id="rec-registro-consulta" name="rec-registro-consulta" required>
+                            </div>
+                        </div>
+                    </div>    
+                    <div style="margin-top: 10px" class="div-label">
+                        <div class="linha">
+                            <div style="max-width: 30%;" class="campo">
+                                <label for="pagamento-registro-consulta-barra">Pagamento:</label>
+                                <input disabled class="input" type="text" id="pagamento-registro-consulta-barra" name="name-pagamento-registro-consulta-barra">
+                            </div>
+                            <div style="max-width: 30%;" class="campo">
+                                <label for="cliente-registro-consulta-barra">Cliente:</label>
+                                <input disabled class="input" type="text" id="cliente-registro-consulta-barra" name="name-cliente-registro-consulta-barra">
+                            </div>
+                            <div style="max-width: 30%;" class="campo">
+                                <label for="valor-registro-consulta-barra">Valor:</label>
+                                <input disabled class="input" type="text" id="valor-registro-consulta-barra" name="name-valor-registro-consulta-barra">
+                            </div>
+                        </div>
+                    </div>  
+                </fieldset>
+
+                <nav aria-label="Page navigation only arrows" style="margin-top: 20px;">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <li class="page-item" id="prev-btnR">
+                            <a class="page-link" href="#" aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item" id="next-btnR">
+                            <a class="page-link" href="#" aria-label="Próximo">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <button id="bRC" type="submit">Finalizar</button>
+                <button class="b2" type="button" onclick="closeModelRegistroConsulta()">Fechar</button>
+
+            </form>
+        </div>
+    </div>
+
+
+<!--
+    <div>
+        <img style="object-fit: cover;" src="/img/47ca45247604e4cbb542882ba763e139.jpg">
+    </div>
+-->
+
+    <div class="logo-canto"></div>
+
+    <script src="../dist/cadastroFunc.js" defer></script>
+    <script src="../dist/cadastroCliente.js" defer></script>
+    <script src="../dist/cadastroUsuario.js" defer></script>
+    <script src="../dist/Ordem.js" defer></script>
+    <script src="../dist/cadastroPagSer.js" defer></script>
+    <script src="../dist/receber.js" defer></script>
+    <script src="../dist/relato.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

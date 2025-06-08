@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;  
+    
 }
 
 body{
@@ -15,7 +16,7 @@ body{
 
 #login-container{
     
-    background-color: rgb(133, 133, 133);
+    background-color: rgb(201, 201, 201);
     padding: 50px;
     text-align: center;
     border-radius: 20px;   
@@ -40,13 +41,15 @@ label{
 input{
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: solid 0.5px;
     font-size: 15px;
+    background: none;
+    background-color: transparent;
 }
 
 button{
     padding: 10px 30px;
-    background-color: #4db44d;
+    background-color: #1cd31c;
     color: rgb(0, 0, 0);
     border: none;
     font-weight: bold;
@@ -55,7 +58,7 @@ button{
 }
 
 button:hover{
-    background-color: #3f9c3f;
+    background-color: #41df41;
     color: rgb(255, 255, 255);
 }
 

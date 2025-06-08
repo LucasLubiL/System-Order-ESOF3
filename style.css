@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.mini-tela {
+    width: 600px;
+    max-height: 700px;
+    padding: 16px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.relatos-container {
+    max-height: 600px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #fefefe;
+}
+
+.bloco-relato {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+}
+
+.bloco-relato textarea {
+    width: 100%;
+    height: 80px;
+    resize: none;
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+.bloco-relato button {
+    padding: 6px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bloco-relato button:hover {
+    background-color: #218838;
+}

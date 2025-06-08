@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Sansation", sans-serif;
+  
+}
+
+nav.bloqueado{
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+#mini-tela, #mini-tela-cliente, #mini-tela-usuario, #mini-tela-ordem, #mini-tela-servico, #mini-tela-pagamento, #mini-tela-cliente-consulta, #mini-tela-funcionario-consulta, #mini-tela-usuario-consulta, #mini-tela-pagamento-consulta, #mini-tela-servico-consulta, #mini-tela-ordem-consulta, #mini-tela-registro-consulta, #mini-tela-relato{
+    width: 100%;
+    height: 857px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.titul {
+    width: 100%;
+    background-color: rgb(71, 71, 71);
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-radius: 20px;
+    color: white;
+    font-size: 24px;
+}
+
+.mini-tela-filho, .mini-tela-cliente-filho, .mini-tela-usuario-filho, .mini-tela-ordem-filho, .mini-tela-pagamento-filho, .mini-tela-servico-filho, .mini-tela-cliente-filho-consulta, .mini-tela-funcionario-filho-consulta, .mini-tela-usuario-filho-consulta, .mini-tela-pagamento-filho-consulta, .mini-tela-servico-filho-consulta, .mini-tela-ordem-filho-consulta, .mini-tela-registro-filho-consulta, .mini-tela-relato-filho{
+    padding: 30px 40px;
+    background-color: rgb(219, 219, 219);
+    border-radius: 20px;
+    max-width: 80%;
+    width: 100%;
+}
+
+form {
+    width: 100%;
+}
+
+.div-label {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.linha {
+    display: flex;
+    gap: 20px;
+}
+
+.campo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: start;
+}
+
+.campo input, .campo select {
+    padding: 8px;
+    border: 1px solid #616161;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.campo select{
+    font-size: 15px;
+    height: 35px;
+}
+
+button {
+    width: 100px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-right: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#bF, #bC, #bU, #bO, #bS, #bP, #bCC, #bFC, #bUC, #bPC, #bSC, #bOC, #bRC, #bR{
+    background-color: #4ec74e;
+}
+
+#bF:hover, #bC:hover, #bU:hover, #bO:hover, #bS:hover, #bP:hover, #bCC:hover, #bFC:hover, #bUC:hover, #bPC:hover, #bSC:hover, #bOC:hover, #bRC:hover, #bR:hover{
+    background-color: #257a25;
+}
+
+#bCE, #bFE, #bUE, #bPE, #bSE, #bOE, #bOD{
+    background-color: #e2bd16;
+}
+
+#bCE:hover, #bFE:hover, #bUE:hover, #bPE:hover, #bSE:hover, #bOE:hover, #bOD:hover{
+    background-color: #948b13;
+}
+
+#bCEx, #bFEx, #bUEx, #bPEx, #bSEx, #bOCan{
+    background-color: #ca1a1a;
+}
+
+.b2{
+    background-color: #cc4545;
+}
+
+.b2:hover, #bCEx:hover, #bFEx:hover, #bUEx:hover, #bPEx:hover, #bSEx:hover, #bOCan:hover{
+    background-color: #8a1c1c;
+}
+
+#bConsultaCli, #bConsultaFunc, #bConsultaOrdem, #bConsultaRegistro{
+    background-color: rgb(48, 48, 48);
+}
+
+#bConsultaCli:hover, #bConsultaFunc:hover, #bConsultaOrdem:hover, #bConsultaRegistro:hover{
+    background-color: rgb(116, 116, 116);
+}
