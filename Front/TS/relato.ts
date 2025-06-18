@@ -84,7 +84,6 @@ async function carregarRelatos(): Promise<void> {
             container.appendChild(form);
         });
 
-        // Adiciona os eventos após criar os botões
         document.querySelectorAll(".btn-finalizar").forEach(btn => {
             btn.addEventListener("click", async (event) => {
                 const button = event.target as HTMLButtonElement;

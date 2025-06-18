@@ -1,7 +1,23 @@
+Sistema/{
+
+    1 - npm init -y
+
+    1 - npm install
+
+    2 - npm install concurrently --save-dev
+
+    4 - npm install selenium-webdriver
+
+}
+
 Front/{
 
+   1 - npm init -y
+
+   2 - npm install typescript --save-dev
+
+   3 - npx tsc --init
     
-   -- npm install choices.js -> para rolagem de scrool nos selects
 
 }
 
@@ -12,9 +28,13 @@ Back/{
    2 - npm install express pg
        npm install typescript ts-node @types/node @types/express --save-dev
 
-   3 - 
+   3 - npm install pg
+       npm install @types/pg --save-dev
 
-   4 - npm install express-session
+   4 - npm install --save-dev nodemon ts-node
+
+
+   5 - npm install express-session
        npm install --save-dev @types/express-session 
 
 }

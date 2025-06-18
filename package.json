@@ -5,6 +5,7 @@
     "start": "concurrently \"npm run dev --prefix back\" \"npm run dev --prefix front\""
   },
   "dependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.1.2",
+    "selenium-webdriver": "^4.33.0"
   }
 }
