@@ -1,63 +1,92 @@
-# 🛠️ ServiceOrder - Sistema de Ordens de Serviço
+# ServiceOrder: Sistema de Ordens de Serviço
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Finalizado-brightgreen?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge"/>
-</p>
+![Node.js](https://img.shields.io/badge/Node.js-Express-green?style=for-the-badge&logo=nodedotjs)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=typescript)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?style=for-the-badge&logo=postgresql)
 
-## 📌 Sobre o projeto
-O **ServiceOrder** é um sistema completo para gerenciamento de **ordens de serviço**, permitindo o cadastro de clientes, funcionários, usuários, serviços e pagamentos, além da criação, acompanhamento e finalização de ordens.  
+Sistema para gerenciamento de ordens de serviço, com cadastro de clientes, funcionários, usuários, serviços e pagamentos, além da criação, acompanhamento e finalização das ordens.
 
-👉 O sistema foi projetado para atender tanto **ordens de manutenção física (hardware/PC)** realizadas por técnicos, quanto **ordens de software/sistema**, que podem ser direcionadas ao **desenvolvedor** para resolução remota.  
+O sistema atende dois tipos de ordem: manutenção física (hardware e PC), executada por técnicos, e ordens de software, que podem ser direcionadas ao desenvolvedor para resolução remota.
 
----
+Projeto da disciplina de Engenharia de Software (ESOF3), no curso de Análise e Desenvolvimento de Sistemas.
 
-## 🎯 Objetivos principais
-- ✔️ Gerenciar cadastros de usuários, clientes, funcionários e serviços  
-- ✔️ Criar e acompanhar ordens de serviço (hardware e software)  
-- ✔️ Registrar pagamentos e relatórios técnicos  
-- ✔️ Permitir integração de regras de negócio no backend  
-- ✔️ Sistema modular com **POO e camadas (BO, DAO, Controllers, Models e Routes)**  
-- ✔️ Sessão persistente com `express-session`  
+## Funcionalidades
 
----
+- Cadastro e gerenciamento de usuários, clientes, funcionários e serviços
+- Criação e acompanhamento de ordens de serviço de hardware e software
+- Registro de pagamentos e relatórios técnicos
+- Regras de negócio centralizadas no back-end
+- Sessão persistente de usuário com `express-session`
 
-## 🚀 Tecnologias utilizadas
+## Arquitetura
 
-### **Frontend**
-<p>
-  <img src="https://skillicons.dev/icons?i=html,css,typescript" />
-</p>
+O back-end segue Programação Orientada a Objetos e separação em camadas, cada uma com uma responsabilidade:
 
-### **Backend**
-<p>
-  <img src="https://skillicons.dev/icons?i=nodejs,express,typescript" />
-</p>
+| Camada | Responsabilidade |
+|---|---|
+| `routes` | Define as rotas da API |
+| `controllers` | Recebem as requisições e devolvem as respostas |
+| `BO` | Regras de negócio |
+| `dao` | Acesso ao banco de dados |
+| `models` | Entidades do sistema |
+| `config` | Configurações, como a conexão com o banco |
 
-### **Banco de Dados**
-<p>
-  <img src="https://skillicons.dev/icons?i=postgres" />
-</p>
+## Tecnologias
 
----
+| Camada | Tecnologias |
+|---|---|
+| Front-end | HTML, CSS e TypeScript |
+| Back-end | Node.js, Express e TypeScript |
+| Banco de dados | PostgreSQL |
 
-## 📂 Estrutura do projeto
+## Estrutura do projeto
 
-```bash
+```
 ServiceOrder/
-│
-├── Front/                # Frontend
-│   ├── HTML/             # Páginas (index.html, principal.html, cadastros etc.)
+├── Front/                # Front-end
+│   ├── HTML/             # Páginas (index, principal, cadastros etc.)
 │   ├── CSS/              # Estilos
 │   ├── TS/               # Lógica em TypeScript
 │   └── dist/             # Arquivos compilados
 │
-├── Back/                 # Backend
+├── Back/                 # Back-end
 │   ├── BO/               # Regras de negócio
-│   ├── config/           # Configurações (ex: conexão com banco)
-│   ├── controllers/      # Controladores (recebem requisições)
-│   ├── dao/              # Data Access Object (acesso ao banco)
-│   ├── models/           # Modelos (entidades)
+│   ├── config/           # Configurações (ex.: conexão com banco)
+│   ├── controllers/      # Controladores
+│   ├── dao/              # Acesso ao banco (Data Access Object)
+│   ├── models/           # Entidades
 │   ├── routes/           # Rotas da API
-│   ├── utils/            # Utilitários (ex: tipagem de sessão)
+│   ├── utils/            # Utilitários (ex.: tipagem de sessão)
 │   └── server.ts         # Ponto de entrada
+│
+├── Banco/                # Scripts do banco de dados
+└── Testes/               # Testes
+```
+
+## Como executar
+
+**Pré-requisitos:** Node.js e PostgreSQL instalados.
+
+```bash
+git clone https://github.com/LucasLubiL/System-Order-ESOF3.git
+cd System-Order-ESOF3
+npm install
+```
+
+1. Crie o banco de dados no PostgreSQL usando os scripts da pasta `Banco/`.
+2. Ajuste as credenciais de conexão em `Back/config/`.
+3. Inicie o servidor. Os comandos de instalação e de limpeza de cache usados no projeto estão nos arquivos `.txt` da raiz do repositório.
+
+---
+
+## Autor
+
+**Lucas Amaral Luciano**
+Desenvolvedor Full Stack Java e Angular, formado em Análise e Desenvolvimento de Sistemas pelo IFTM.
+
+Projeto acadêmico da disciplina de Engenharia de Software, no IFTM Campus Patrocínio.
+
+[![Portfólio](https://img.shields.io/badge/Portf%C3%B3lio-lucasamaral.dev-1f2937?style=for-the-badge&logo=googlechrome&logoColor=white)](https://lucasamaral.dev/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-lucas--amaral--luciano-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/lucas-amaral-luciano)
+[![GitHub](https://img.shields.io/badge/GitHub-LucasLubiL-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/LucasLubiL)
+[![E-mail](https://img.shields.io/badge/E--mail-tech.lucas.amaral%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:tech.lucas.amaral@gmail.com)
